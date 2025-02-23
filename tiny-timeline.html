@@ -48,7 +48,7 @@
         <g stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none" fill-opacity="1">
             <g v-for="(row, rowIndex) in rows" :key="rowIndex">
                 <title>Layer {{ rowIndex + 1 }}</title>
-                <g v-for="(column, colIndex) in row.columns" :key="colIndex">
+                <g v-for="(column, colIndex) in (rowIndex % 2 === 0 ? row.columns : row.columns.slice().reverse())" :key="colIndex">
                     <g :id=column.lines[0] @click="showVideo(column.youtubeEmbedURL || column.webURL, column.youtubeEmbedURL ? 'video' : 'web')">
                         <g v-if="rowIndex % 2 === 0"
                            :transform="'translate(0, ' + (rowIndex * 200) + ')'">
