@@ -45,7 +45,11 @@
     <button @click="saveAsPNG">Save as PNG</button>
     <svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
          xmlns="http://www.w3.org/2000/svg" viewBox="46.0 -0.3 734.8 1260" width="734.8" height="1280">
-        <defs/>
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#90ee90"/>
+            </marker>
+        </defs>
         <g stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none" fill-opacity="1">
             <g v-for="(row, rowIndex) in rows" :key="rowIndex">
                 <title>Layer {{ rowIndex + 1 }}</title>
@@ -67,7 +71,7 @@
                             <line :x1="(rowIndex % 2 === 0 ? 200 : 381) + colIndex * 200"
                                   :y1="30 + rowIndex * 200"
                                   :x2="(rowIndex % 2 === 0 ? 380 : 201) + colIndex * 200"
-                                  :y2="30 + rowIndex * 200" stroke="#90ee90" stroke-linecap="butt"
+                                  :y2="30 + rowIndex * 200" stroke="#90ee90" stroke-linecap="butt" marker-end="url(#arrowhead)"
                                   stroke-linejoin="round"
                                   stroke-width="7"/>
                         </g>
