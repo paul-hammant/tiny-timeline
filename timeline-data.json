@@ -40,15 +40,14 @@
         "columns": [
             {
                 "lines": [
-                    "1949: The Second Sex (book)",
-                    "The Publication of 'The Second",
-                    " Sex' by Simone de Beauvoir,",
-                    "This influential book challenged",
-                    "traditional roles assigned to women in",
-                    "Western society and became a found-",
-                    "ational text for the feminist movement."
+                    "1920: 19th Amendment",
+                    "The Passage of the 19th Amendment in",
+                    "the U.S. granted American women the",
+                    "right to vote - a culmination of decades",
+                    "of activism led by suffragists like Susan",
+                    "B. Anthony and Alice Paul."
                 ],
-                "webURL": "https://en.wikipedia.org/wiki/The_Second_Sex"
+                "youtubeEmbedURL": "https://www.youtube.com/embed/XcrGQ0npuCw?si=_g2h4LYYk9zEFNzN"
             },
             {
                 "lines": [
@@ -63,14 +62,15 @@
             },
             {
                 "lines": [
-                    "1920: 19th Amendment",
-                    "The Passage of the 19th Amendment in",
-                    "the U.S. granted American women the",
-                    "right to vote - a culmination of decades",
-                    "of activism led by suffragists like Susan",
-                    "B. Anthony and Alice Paul."
+                    "1949: The Second Sex (book)",
+                    "The Publication of 'The Second",
+                    " Sex' by Simone de Beauvoir,",
+                    "This influential book challenged",
+                    "traditional roles assigned to women in",
+                    "Western society and became a found-",
+                    "ational text for the feminist movement."
                 ],
-                "youtubeEmbedURL": "https://www.youtube.com/embed/XcrGQ0npuCw?si=_g2h4LYYk9zEFNzN"
+                "webURL": "https://en.wikipedia.org/wiki/The_Second_Sex"
             }
         ]
     },
@@ -121,17 +121,14 @@
         "columns": [
             {
                 "lines": [
-                    "1994: VAWA",
-                    "USA law to protect women from violence,",
-                    "the Violence Against Women Act was a",
-                    "groundbreaking U.S. law that enhanced",
-                    "legal protections for women against",
-                    "domestic violence, sexual assault, and",
-                    "stalking, with funding for victim support",
-                    "services, strengthening law enforcement",
-                    "responses."
+                    "1973: Roe v. Wade",
+                    "The Passage of Roe v. Wade",
+                    "A landmark U.S. Supreme Court",
+                    "decision that legalized abortion",
+                    "nationwide, significantly advancing",
+                    "reproductive rights for women."
                 ],
-                "webURL": "https://en.wikipedia.org/wiki/Violence_Against_Women_Act"
+                "webURL": "https://reproductiverights.org/roe-v-wade/"
             },
             {
                 "lines": [
@@ -146,14 +143,17 @@
             },
             {
                 "lines": [
-                    "1973: Roe v. Wade",
-                    "The Passage of Roe v. Wade",
-                    "A landmark U.S. Supreme Court",
-                    "decision that legalized abortion",
-                    "nationwide, significantly advancing",
-                    "reproductive rights for women."
+                    "1994: VAWA",
+                    "USA law to protect women from violence,",
+                    "the Violence Against Women Act was a",
+                    "groundbreaking U.S. law that enhanced",
+                    "legal protections for women against",
+                    "domestic violence, sexual assault, and",
+                    "stalking, with funding for victim support",
+                    "services, strengthening law enforcement",
+                    "responses."
                 ],
-                "webURL": "https://reproductiverights.org/roe-v-wade/"
+                "webURL": "https://en.wikipedia.org/wiki/Violence_Against_Women_Act"
             }
         ]
     },
