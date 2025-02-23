@@ -200,14 +200,6 @@
     {
         "columns": [
             {
-                "lines": [],
-                "youtubeURL": ""
-            },
-            {
-                "lines": [],
-                "youtubeURL": ""
-            },
-            {
                 "lines": [
                     "2017: Women's Marches",
                     "The Women's March of 2017 was one",
@@ -223,6 +215,7 @@
                 ],
                 "webURL": "https://en.wikipedia.org/wiki/2017_Women%27s_March"
             }
+
         ]
     }
 ]
