@@ -71,12 +71,12 @@
                                   stroke-width="7"/>
                         </g>
                         <g>
-                            <circle :cx="(rowIndex % 2 === 0 ? 190 : (rowIndex === 1 || rowIndex === 3 || rowIndex === 5 ? 190 : 580)) + colIndex * 200"
+                            <circle :cx="(rowIndex % 2 === 0 ? 190 : 580) + colIndex * 200"
                                     :cy="30 + rowIndex * 200" r="10.0" fill="#ffa500"/>
                         </g>
                         <g>
                             <title>heading</title>
-                            <text :transform="'translate(' + ((colIndex === 0 ? (rowIndex % 2 === 0 ? 155 : (rowIndex === 1 || rowIndex === 3 || rowIndex === 5 ? 160 : 545)) : (rowIndex % 2 === 0 ? 170 : (rowIndex === 1 || rowIndex === 3 || rowIndex === 5 ? 175 : 560))) + colIndex * 200) + ' ' + (rowIndex * 200 - 0.3) + ')'"
+                            <text :transform="'translate(' + ((colIndex === 0 ? (rowIndex % 2 === 0 ? 155 : 545) : (rowIndex % 2 === 0 ? 170 : 560)) + colIndex * 200) + ' ' + (rowIndex * 200 - 0.3) + ')'"
                                   fill="black">
                                 <tspan font-family="Helvetica" font-size="14" fill="black" font-weight="bold" x="-45" y="15"
                                        xml:space="preserve">{{ column.lines[0] }}</tspan>
@@ -84,7 +84,7 @@
                         </g>
                         <g>
                             <title>detail</title>
-                            <text :transform="'translate(' + ((colIndex === 0 ? (rowIndex % 2 === 0 ? 135 : (rowIndex === 1 || rowIndex === 3 || rowIndex === 5 ? 130 : 515)) : (rowIndex % 2 === 0 ? 150 : (rowIndex === 1 || rowIndex === 3 || rowIndex === 5 ? 145 : 530))) + colIndex * 200) + ' ' + (rowIndex * 200 + 48.2) + ')'"
+                            <text :transform="'translate(' + ((colIndex === 0 ? (rowIndex % 2 === 0 ? 135 : 515) : (rowIndex % 2 === 0 ? 150 : 530)) + colIndex * 200) + ' ' + (rowIndex * 200 + 48.2) + ')'"
                                   fill="black">
                                 <tspan v-for="(line, lineIndex) in column.lines.slice(1)" :key="lineIndex"
                                        font-family="Helvetica" font-size="11" fill="black" x="-25"
