@@ -71,7 +71,7 @@
                             <line :x1="(rowIndex % 2 === 0 ? 200 : 381) + colIndex * 200"
                                   :y1="30 + rowIndex * 200"
                                   :x2="(rowIndex % 2 === 0 ? 380 : 201) + colIndex * 200"
-                                  :y2="30 + rowIndex * 200" stroke="#90ee90" stroke-linecap="butt" marker-end="url(#arrowhead)"
+                                  :y2="30 + rowIndex * 200" stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead ? 'url(#arrowhead)' : ''"
                                   stroke-linejoin="round"
                                   stroke-width="7"/>
                         </g>
