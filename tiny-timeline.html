@@ -135,6 +135,9 @@
                 canvas.width = svgElement.clientWidth;
                 canvas.height = svgElement.clientHeight;
 
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
                 img.onload = function() {
                     ctx.drawImage(img, 0, 0);
                     const pngFile = canvas.toDataURL('image/png');
