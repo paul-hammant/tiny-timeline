@@ -102,71 +102,18 @@
     const app = new Vue({
         el: '#app',
         data: {
-            rows: [
-                {
-                    columns: [
-                        {lines: ["1848: Seneca Falls Convention", "The first women's rights convention", "in the U.S., held in Seneca Falls,", "New York. It resulted in the Declaration", "of Sentiments, calling for equal rights", "for women, including the right to vote."],
-                            webURL: "https://en.wikipedia.org/wiki/Seneca_Falls_Convention"}, <!-- PBS: Seneca Falls Convention -->
-                        {lines: ["1869: Women's Suffrage Assoc.", "Formation of the National Woman Suff-", "rage Association Founded by Susan B. ", "Anthony and Elizabeth Cady Stanton in", "the U.S., this organization focused on", "advocating for women’s right to vote,", "which became a cornerstone of the", "women’s suffrage movement."],
-                            webURL: "https://www.crusadeforthevote.org/nwsa-organize" },
-                        {lines: ["1893: Right to Vote in New Zealand", "New Zealand became the first self-governing", "country to grant women the right to vote,", "a major milestone in global women's suffrage."],
-                            webURL: "https://en.wikipedia.org/wiki/1893_New_Zealand_general_election" }
-                    ]
-                },
-                {
-                    columns: [
-                        {lines: ["1949: The Second Sex (book)", "The Publication of 'The Second", " Sex' by Simone de Beauvoir,", "This influential book challenged", "traditional roles assigned to women in", "Western society and became a found-", "ational text for the feminist movement."],
-                            webURL: "https://en.wikipedia.org/wiki/The_Second_Sex" },
-                        {lines: ["1928: Right to Vote in the UK", "With the Representation of the", "People (Equal Franchise) Act of 1928,", " women in the UK gained the same", "voting rights as men, building on partial", "voting rights gained in 1918."],
-                            webURL: "https://en.wikipedia.org/wiki/Representation_of_the_People_(Equal_Franchise)_Act_1928" },
-                        {lines: ["1920: 19th Amendment", "The Passage of the 19th Amendment in", "the U.S. granted American women the", "right to vote - a culmination of decades", "of activism led by suffragists like Susan", "B. Anthony and Alice Paul."],
-                            youtubeEmbedURL: "https://www.youtube.com/embed/XcrGQ0npuCw?si=_g2h4LYYk9zEFNzN"}
-                    ]
-                },
-                {
-                    columns: [
-                        {lines: ["1960: The Pill", "Introduction of the Birth Control Pill", "Approved by the FDA in the U.S.,", "the pill revolutionized women's repro-", "ductive rights, giving them more", "control over family planning and their", "bodies."],
-                            webURL: "https://www.npr.org/2020/05/09/852807455/how-the-approval-of-the-birth-control-pill-60-years-ago-helped-change-lives" },
-                        {lines: ["1963: Equal Pay Act", "he 1963 Equal Pay Act in the U.S.", "was a key piece of legislation that", "aimed to eliminate wage disparity", "based on gender, requiring that men", "and women receive equal pay for equal", "work in the same workplace, thus", "addressing a critical aspect of gender", "inequality in the labor market."],
-                            webURL: "https://en.wikipedia.org/wiki/Equal_Pay_Act_of_1963" },
-                        {lines: ["1966: NOW (org)", "Formation of the National Organization", "for Women. Established by Betty", "Friedan and other activists, NOW", "sought to address a wide range of", "women's issues, including workplace", "discrimination, reproductive rights,", "and equal pay."],
-                            webURL: "https://now.org/about/history/statement-of-purpose/" }
-                    ]
-                },
-                {
-                    columns: [
-                        {lines: ["1994: VAWA", "USA law to protect women from violence,", "the Violence Against Women Act was a", "groundbreaking U.S. law that enhanced", "legal protections for women against", "domestic violence, sexual assault, and", "stalking, with funding for victim support", "services, strengthening law enforcement", "responses."],
-                            webURL: "https://en.wikipedia.org/wiki/Violence_Against_Women_Act" },
-                        {lines: ["1980: CEDAW", "UN adopts the Convention", "on the Elimination of all", "forms of discrimination Against Women.", "It serves as an international bill of rights", "for women"],
-                            webURL: "https://en.wikipedia.org/wiki/Convention_on_the_Elimination_of_All_Forms_of_Discrimination_Against_Women" },
-                        {lines: ["1973: Roe v. Wade", "The Passage of Roe v. Wade", "A landmark U.S. Supreme Court", "decision that legalized abortion", "nationwide, significantly advancing", "reproductive rights for women."],
-                            webURL: "https://reproductiverights.org/roe-v-wade/" }
-                    ]
-                },
-                {
-                    columns: [
-                        {lines: ["2000: UN Resolution 1325", "This landmark document addresses the", "impact of war on women: 1. Protection", "of Women in Conflict . 2) Participation", "of Women in Peace Processes", "3) Prevention of Violence Against", "Women. 4) Gender Mainstreaming", "in Peacekeeping"],
-                            webURL: "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1325" },
-                        {lines: ["2013: Malala Yousafzai", "Advocates for girls' education", "after surviving an 2012 assass-", "ination attempt and grave injury, ", "and with worldwide protesting.", "She went on to be awarded", " the Nobel Peace Prize in 2014"],
-                            webURL: "https://en.wikipedia.org/wiki/Malala_Yousafzai" },
-                        {lines: ["2017: Me Too Movement", "Sparked by a social media movement", "and widespread allegations of sexual", "harassment and assault, Me Too catalyzed a", "global conversation about sexual violence,", "gender inequality, and workplace harassment."],
-                            webURL: "https://metoomvmt.org/get-to-know-us/history-inception/" }
-                    ]
-                },
-                {
-                    columns: [
-                        {lines: [],
-                            youtubeURL: "" },
-                        {lines: [],
-                            youtubeURL: "" },
-                        {lines: ["2017: Women's Marches", "The Women's March of 2017 was one", "of the largest single-day protests in U.S.", "history, with an estimated 4 to 5 million people", "participating across the USA, and millions", "more joining in solidarity marches", " worldwide. The main event took place", "in Washington, D.C., where around 500,000", "demonstrators gathered. Participants", "were advocating for women's & reproductive,", "rights and other social justice issues"],
-                            webURL: "https://en.wikipedia.org/wiki/2017_Women%27s_March" }
-                    ]
-                }
-            ],
+            rows: [],
             showOverlay: false,
             currentOverlayURL: '',
             currentOverlayType: ''
+        },
+        created() {
+            fetch('timeline-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    this.rows = data;
+                })
+                .catch(error => console.error('Error loading timeline data:', error));
         },
         methods: {
             showVideo(url, type) {
