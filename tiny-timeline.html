@@ -118,7 +118,12 @@
             fetch('timeline-data.json')
                 .then(response => response.json())
                 .then(data => {
-                    this.rows = data;
+                    this.rows = [];
+                    for (let i = 0; i < data.length; i += 3) {
+                        this.rows.push({
+                            columns: data.slice(i, i + 3)
+                        });
+                    }
                 })
                 .catch(error => console.error('Error loading timeline data:', error));
         },
