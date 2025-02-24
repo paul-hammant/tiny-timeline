@@ -1,0 +1,65 @@
+[
+  {
+    "lines": [
+      "1957: Sputnik 1",
+      "The first artificial Earth satellite",
+      "launched by the Soviet Union, marking",
+      "the beginning of the space age."
+    ],
+    "webURL": "https://en.wikipedia.org/wiki/Sputnik_1"
+  },
+  {
+    "lines": [
+      "1961: Yuri Gagarin",
+      "The first human to journey into outer",
+      "space and orbit the Earth, aboard",
+      "Vostok 1."
+    ],
+    "webURL": "https://en.wikipedia.org/wiki/Yuri_Gagarin"
+  },
+  {
+    "lines": [
+      "1969: Apollo 11",
+      "The first successful manned mission",
+      "to land on the Moon, with astronauts",
+      "Neil Armstrong and Buzz Aldrin."
+    ],
+    "webURL": "https://en.wikipedia.org/wiki/Apollo_11"
+  },
+  {
+    "lines": [
+      "1981: Space Shuttle",
+      "The first reusable spacecraft,",
+      "launched by NASA, revolutionizing",
+      "space travel."
+    ],
+    "webURL": "https://en.wikipedia.org/wiki/Space_Shuttle"
+  },
+  {
+    "lines": [
+      "1998: International Space Station",
+      "The first module of the ISS was launched,",
+      "beginning a new era of international",
+      "cooperation in space."
+    ],
+    "webURL": "https://en.wikipedia.org/wiki/International_Space_Station"
+  },
+  {
+    "lines": [
+      "2012: SpaceX Dragon",
+      "The first commercial spacecraft to",
+      "deliver cargo to the ISS, marking a",
+      "new era in private spaceflight."
+    ],
+    "webURL": "https://en.wikipedia.org/wiki/SpaceX_Dragon"
+  },
+  {
+    "lines": [
+      "2021: Mars Rover Perseverance",
+      "NASA's rover lands on Mars,",
+      "beginning a new mission to search",
+      "for signs of ancient life."
+    ],
+    "webURL": "https://en.wikipedia.org/wiki/Perseverance_(rover)"
+  }
+]
