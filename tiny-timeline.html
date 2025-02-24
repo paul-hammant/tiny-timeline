@@ -115,7 +115,9 @@
             currentOverlayType: ''
         },
         created() {
-            fetch('womens-rights.json')
+            const hash = window.location.hash.substring(1);
+            const jsonFileName = hash ? hash : 'womens-rights.json';
+            fetch(jsonFileName)
                 .then(response => response.json())
                 .then(data => {
                     this.rows = [];
