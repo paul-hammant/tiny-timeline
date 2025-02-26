@@ -129,6 +129,7 @@
                     for (let i = 0; i < this.rows.length; i++) {
                         this.rows[i].rowsAfterThisOne = i < this.rows.length - 1;
                     }
+                    // iterate over rows adding field leftToRightRow = true (and false alternating), right here
                 })
                 .catch(error => console.error('Error loading timeline data:', error));
         },
