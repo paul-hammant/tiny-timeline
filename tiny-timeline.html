@@ -126,7 +126,9 @@
                             columns: data.slice(i, i + 3)
                         });
                     }
-                    // loop through rows again, adding a rowsAfterThisOne: true (or false)
+                    for (let i = 0; i < this.rows.length; i++) {
+                        this.rows[i].rowsAfterThisOne = i < this.rows.length - 1;
+                    }
                 })
                 .catch(error => console.error('Error loading timeline data:', error));
         },
