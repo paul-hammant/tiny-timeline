@@ -55,14 +55,14 @@
                 <title>Layer {{ rowIndex + 1 }}</title>
                 <g v-for="(column, colIndex) in (rowIndex % 2 === 0 ? row.columns : row.columns.slice().reverse())" :key="colIndex">
                     <g :id=column.lines[0] @click="showVideo(column.youtubeEmbedURL || column.webURL, column.youtubeEmbedURL ? 'video' : 'web')">
-                        <g v-if="rowIndex % 2 === 0"
+                        <g v-if="row.leftToRightRow && row.rowsAfterThisOne"
                            :transform="'translate(0, ' + (rowIndex * 200) + ')'">
                             <title>Row_to_Row_RHS</title>
                             <path d="M 600 30 C 640.2 29.9 693.9 25.0 714 58 C 734.1 91.0 735.8 166.3 714 199.7 C 693.9 230.6 642.1 229.7 600.0 229.9"
                                   stroke="#90ee90" stroke-linecap="butt" stroke-linejoin="round" stroke-width="7"/>
                         </g>
-                        <g v-if="rowIndex % 2 === 0"
-                           :transform="'translate(0, ' + (rowIndex * 200) + ')'">
+                        <g v-if="row.leftToRightRow === false && row.rowsAfterThisOne"
+                           :transform="'translate(0, ' + (rowIndex * 200 - 200)  + ')'">
                             <title>Row_to_Row_LHS</title>
                             <path d="M 179.2 230.6 C 139.0 230.4 85.3 225.6 65.2 258.6 C 45.1 291.6 43.4 366.9 65.2 400.2 C 87.0 433.6 145.7 429.9 189.2 430.6"
                                   stroke="red" stroke-linecap="butt" stroke-linejoin="round" stroke-width="7"/>
@@ -125,6 +125,7 @@
                         this.rows.push({
                             columns: data.slice(i, i + 3)
                         });
+                        // ensure three columbs per row - adding one or two empty ones
                     }
                     for (let i = 0; i < this.rows.length; i++) {
                         this.rows[i].rowsAfterThisOne = i < this.rows.length - 1;
