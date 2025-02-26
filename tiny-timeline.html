@@ -121,7 +121,9 @@
                 .then(response => response.json())
                 .then(data => {
                     this.rows = [];
-                    // last but one in data.length should have arrowHead=true; added.
+                    if (data.length > 1) {
+                        data[data.length - 2].arrowHead = true;
+                    }
                     for (let i = 0; i < data.length; i += 3) {
                         const columns = data.slice(i, i + 3);
                         while (columns.length < 3) {
