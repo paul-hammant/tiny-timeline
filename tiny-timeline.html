@@ -122,10 +122,11 @@
                 .then(data => {
                     this.rows = [];
                     for (let i = 0; i < data.length; i += 3) {
-                        this.rows.push({
-                            columns: data.slice(i, i + 3)
-                        });
-                        // ensure three columbs per row - adding one or two empty ones
+                        const columns = data.slice(i, i + 3);
+                        while (columns.length < 3) {
+                            columns.push({ lines: ["", "", "", ""], webURL: "" });
+                        }
+                        this.rows.push({ columns });
                     }
                     for (let i = 0; i < this.rows.length; i++) {
                         this.rows[i].rowsAfterThisOne = i < this.rows.length - 1;
