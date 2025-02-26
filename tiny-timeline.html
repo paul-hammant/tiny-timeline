@@ -139,7 +139,19 @@
                             this.rows[i].columns[j].arrowHead = false;
                         }
                     }
-                    // penultimate non blank row/column should have arrowHead = true
+                    let penultimateNonBlankFound = false;
+                    for (let i = this.rows.length - 1; i >= 0 && !penultimateNonBlankFound; i--) {
+                        for (let j = this.rows[i].columns.length - 1; j >= 0; j--) {
+                            if (this.rows[i].columns[j].lines[0] !== "") {
+                                if (penultimateNonBlankFound) {
+                                    this.rows[i].columns[j].arrowHead = true;
+                                    penultimateNonBlankFound = false;
+                                    break;
+                                }
+                                penultimateNonBlankFound = true;
+                            }
+                        }
+                    }
                 })
                 .catch(error => console.error('Error loading timeline data:', error));
         },
