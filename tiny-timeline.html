@@ -67,8 +67,8 @@
                             <path d="M 179.2 230.6 C 139.0 230.4 85.3 225.6 65.2 258.6 C 45.1 291.6 43.4 366.9 65.2 400.2 C 87.0 433.6 145.7 429.9 189.2 430.6"
                                   stroke="red" stroke-linecap="butt" stroke-linejoin="round" stroke-width="7"/>
                         </g>
-                        <g v-if="colIndex < row.columns.length - 1">
-                            <line :x1="(rowIndex % 2 === 0 ? 200 : 381) + colIndex * 200"
+                        <g v-if="colIndex < row.columns.length - 1 ">
+                            <line v-if="column.lines[0] !== ''" :x1="(rowIndex % 2 === 0 ? 200 : 381) + colIndex * 200"
                                   :y1="30 + rowIndex * 200"
                                   :x2="(rowIndex % 2 === 0 ? 380 : 201) + colIndex * 200"
                                   :y2="30 + rowIndex * 200" stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead ? 'url(#arrowhead)' : ''"
@@ -76,7 +76,7 @@
                                   stroke-width="7"/>
                         </g>
                         <g>
-                            <circle :cx="190 + colIndex * 200"
+                            <circle v-if="column.lines[0] !== ''" :cx="190 + colIndex * 200"
                                     :cy="30 + rowIndex * 200" r="10.0" fill="#ffa500"/>
                         </g>
                         <g>
@@ -134,6 +134,7 @@
                     for (let i = 0; i < this.rows.length; i++) {
                         this.rows[i].leftToRightRow = i % 2 === 0;
                     }
+                    // last row last column should have arrowHead = true (all others = false)
                 })
                 .catch(error => console.error('Error loading timeline data:', error));
         },
