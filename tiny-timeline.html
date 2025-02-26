@@ -134,7 +134,13 @@
                     for (let i = 0; i < this.rows.length; i++) {
                         this.rows[i].leftToRightRow = i % 2 === 0;
                     }
-                    // last row last column should have arrowHead = true (all others = false)
+                    for (let i = 0; i < this.rows.length; i++) {
+                        for (let j = 0; j < this.rows[i].columns.length; j++) {
+                            this.rows[i].columns[j].arrowHead = false;
+                        }
+                    }
+                    const lastRow = this.rows[this.rows.length - 1];
+                    lastRow.columns[lastRow.columns.length - 1].arrowHead = true;
                 })
                 .catch(error => console.error('Error loading timeline data:', error));
         },
