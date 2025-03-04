@@ -65,7 +65,7 @@
                            :transform="'translate(0, ' + (rowIndex * 200 - 200)  + ')'">
                             <title>Row_to_Row_LHS</title>
                             <path d="M 179.2 230.6 C 139.0 230.4 85.3 225.6 65.2 258.6 C 45.1 291.6 43.4 366.9 65.2 400.2 C 87.0 433.6 145.7 429.9 189.2 430.6"
-                                  stroke="red" stroke-linecap="butt" :marker-end="column.arrowHead ? 'url(#arrowhead)' : ''" stroke-linejoin="round" stroke-width="7"/>
+                                  stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead ? 'url(#arrowhead)' : ''" stroke-linejoin="round" stroke-width="7"/>
                         </g>
                         <g v-if="colIndex < row.columns.length - 1 ">
                             <line v-if="column.lines[0] !== ''" :x1="(rowIndex % 2 === 0 ? 200 : 381) + colIndex * 200"
