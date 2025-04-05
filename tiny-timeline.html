@@ -44,9 +44,12 @@
     </div>
     <button @click="saveAsPNG">Save as PNG</button>
     <svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
-         xmlns="http://www.w3.org/2000/svg" viewBox="46.0 -0.3 734.8 1260" width="734.8" height="1280">
+         xmlns="http://www.w3.org/2000/svg" :viewBox="'46.0 -0.3 734.8 ' + (rows.length * 200 + 60)" :width="734.8" :height="rows.length * 200 + 80">
         <defs>
             <marker id="arrowhead" markerWidth="5" markerHeight="3.5" refX="2.5" refY="1.75" orient="auto">
+                <polygon points="0 0, 5 1.75, 0 3.5" fill="#90ee90"/>
+            </marker>
+            <marker id="arrowhead-ltr" markerWidth="5" markerHeight="3.5" refX="-4.5" refY="1.75" orient="auto">
                 <polygon points="0 0, 5 1.75, 0 3.5" fill="#90ee90"/>
             </marker>
         </defs>
@@ -58,20 +61,20 @@
                         <g v-if="row.leftToRightRow && row.rowsAfterThisOne"
                            :transform="'translate(0, ' + (rowIndex * 200) + ')'">
                             <title>Row_to_Row_RHS</title>
-                            <path d="M 600 30 C 640.2 29.9 693.9 25.0 714 58 C 734.1 91.0 735.8 166.3 714 199.7 C 693.9 230.6 642.1 229.7 600.0 229.9"
-                                  stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead ? 'url(#arrowhead)' : ''" stroke-linejoin="round" stroke-width="7"/>
+                            <path d="M 600 30 C 640.2 29.9 673.9 25.0 694 58 C 714.1 91.0 715.8 163.3 694 199.7 C 673.9 232.6 642.1 231.7 600.0 231.9"
+                                  stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead && row.leftToRightRow ? 'url(#arrowhead-ltr)' : ''" stroke-linejoin="round" stroke-width="7"/>
                         </g>
                         <g v-if="row.leftToRightRow === false && row.rowsAfterThisOne"
                            :transform="'translate(0, ' + (rowIndex * 200 - 200)  + ')'">
                             <title>Row_to_Row_LHS</title>
                             <path d="M 179.2 230.6 C 139.0 230.4 85.3 225.6 65.2 258.6 C 45.1 291.6 43.4 366.9 65.2 400.2 C 87.0 433.6 145.7 429.9 189.2 430.6"
-                                  stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead ? 'url(#arrowhead)' : ''" stroke-linejoin="round" stroke-width="7"/>
+                                  stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead && !row.leftToRightRow && colIndex === 0 ? 'url(#arrowhead)' : ''" stroke-linejoin="round" stroke-width="7"/>
                         </g>
-                        <g v-if="colIndex < row.columns.length - 1 ">
+                        <g v-if="colIndex < row.columns.length - 1 && row.columns[colIndex + 1].lines[0] !== ''">
                             <line v-if="column.lines[0] !== ''" :x1="(rowIndex % 2 === 0 ? 200 : 381) + colIndex * 200"
                                   :y1="30 + rowIndex * 200"
                                   :x2="(rowIndex % 2 === 0 ? 380 : 201) + colIndex * 200"
-                                  :y2="30 + rowIndex * 200" stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead ? 'url(#arrowhead)' : ''"
+                                  :y2="30 + rowIndex * 200" stroke="#90ee90" stroke-linecap="butt"
                                   stroke-linejoin="round"
                                   stroke-width="7"/>
                         </g>
