@@ -1,0 +1,101 @@
+[
+  {
+    "lines": [
+      "Lorem Ipsum Entry 1",
+      "Second line of text for entry 1, lorem ipsum.",
+      "Third line for entry 1, dolor sit amet consectetur.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem1"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 2",
+      "Another second line for entry 2, quis nostrud.",
+      "Yet another third line for entry 2, exercitation ullamco.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem2"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 3",
+      "Second line variation for entry 3, sed do eiusmod.",
+      "Third line, different again for entry 3, tempor incididunt.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem3"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 4",
+      "Entry 4's second line, ut labore et dolore.",
+      "Entry 4 has this third line, magna aliqua.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem4"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 5",
+      "The fifth entry's second line of text here.",
+      "For entry five, the third line is distinct.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem5"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 6",
+      "Number six entry, second line with unique words.",
+      "The third line for the sixth entry is also special.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem6"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 7",
+      "This is the second line for entry seven, a bit longer.",
+      "Entry seven's third line contains different phrasing.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem7"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 8",
+      "Eighth entry has a second line as well, quite interesting.",
+      "The third line for entry number eight is varied.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem8"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 9",
+      "Finally, entry nine's second line for completeness.",
+      "And the ninth entry's third line, making it unique.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem9"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 10",
+      "Tenth entry's second line, a milestone achieved.",
+      "The third line for the tenth and final entry here.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem10"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 11",
+      "Eleventh entry brings us to a new level of text.",
+      "The third line for the eleventh entry is quite novel.",
+      "Fourth line, adipiscing elit."
+    ],
+    "webURL": "https://example.com/lorem11"
+  }
+]
