@@ -22,3 +22,10 @@ The `tests/` directory contains JSON files for testing the timeline rendering wi
 - [`tests/six-timeline-entries.json`](https://paul-hammant.github.io/tiny-timeline/tiny-timeline.html#tests/six-timeline-entries): Contains 6 timeline entries.
 - [`tests/seven-timeline-entries.json`](https://paul-hammant.github.io/tiny-timeline/tiny-timeline.html#tests/seven-timeline-entries): Contains 7 timeline entries.
 - [`tests/eight-timeline-entries.json`](https://paul-hammant.github.io/tiny-timeline/tiny-timeline.html#tests/eight-timeline-entries): Contains 8 timeline entries.
+- `tests/nine-timeline-entries.json`: Contains 9 timeline entries.
+- `tests/ten-timeline-entries.json`: Contains 10 timeline entries.
+- `tests/eleven-timeline-entries.json`: Contains 11 timeline entries.
+- `tests/twelve-timeline-entries.json`: Contains 12 timeline entries.
+- `tests/thirteen-timeline-entries.json`: Contains 13 timeline entries.
+- `tests/fourteen-timeline-entries.json`: Contains 14 timeline entries.
+- `tests/fifteen-timeline-entries.json`: Contains 15 timeline entries.
