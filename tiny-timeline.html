@@ -62,13 +62,13 @@
                            :transform="'translate(0, ' + (rowIndex * 200) + ')'">
                             <title>Row_to_Row_RHS</title>
                             <path d="M 600 30 C 640.2 29.9 673.9 25.0 694 58 C 714.1 91.0 715.8 163.3 694 199.7 C 673.9 232.6 642.1 231.7 600.0 231.9"
-                                  stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead && row.leftToRightRow ? 'url(#arrowhead-ltr)' : ''" stroke-linejoin="round" stroke-width="7"/>
+                                  stroke="#90ee90" stroke-linecap="butt" :marker-end="getInterRowArrowMarker(column, rowIndex)" stroke-linejoin="round" stroke-width="7"/>
                         </g>
                         <g v-if="row.leftToRightRow === false && row.rowsAfterThisOne"
                            :transform="'translate(0, ' + (rowIndex * 200 - 200)  + ')'">
                             <title>Row_to_Row_LHS</title>
                             <path d="M 179.2 230.6 C 139.0 230.4 85.3 225.6 65.2 258.6 C 45.1 291.6 43.4 366.9 65.2 400.2 C 87.0 433.6 145.7 429.9 189.2 430.6"
-                                  stroke="#90ee90" stroke-linecap="butt" :marker-end="column.arrowHead && !row.leftToRightRow && colIndex === 0 ? 'url(#arrowhead)' : ''" stroke-linejoin="round" stroke-width="7"/>
+                                  stroke="#90ee90" stroke-linecap="butt" :marker-end="colIndex === 0 ? getInterRowArrowMarker(column, rowIndex) : ''" stroke-linejoin="round" stroke-width="7"/>
                         </g>
                         <g v-if="colIndex < row.columns.length - 1 && row.columns[colIndex + 1].lines[0] !== ''">
                             <line v-if="column.lines[0] !== ''" :x1="(rowIndex % 2 === 0 ? 200 : 381) + colIndex * 200"
@@ -76,7 +76,8 @@
                                   :x2="(rowIndex % 2 === 0 ? 380 : 201) + colIndex * 200"
                                   :y2="30 + rowIndex * 200" stroke="#90ee90" stroke-linecap="butt"
                                   stroke-linejoin="round"
-                                  stroke-width="7"/>
+                                  stroke-width="7"
+                                  :marker-end="getIntraRowArrowMarker(column, rowIndex, colIndex)"/>
                         </g>
                         <g>
                             <circle v-if="column.lines[0] !== ''" :cx="190 + colIndex * 200"
@@ -124,8 +125,11 @@
                 .then(response => response.json())
                 .then(data => {
                     this.rows = [];
-                    if (data.length > 1) {
-                        data[data.length - 2].arrowHead = true;
+                    if (data.length > 0) {
+                        data[data.length - 1].isOverallLast = true;
+                    }
+                    if (data.length >= 2) {
+                        data[data.length - 2].isPenultimate = true;
                     }
                     for (let i = 0; i < data.length; i += 3) {
                         const columns = data.slice(i, i + 3);
@@ -151,6 +155,50 @@
             },
             closeOverlay() {
                 this.showOverlay = false;
+            },
+            getIntraRowArrowMarker(column, rowIndex, colIndex) {
+              if (!column.isPenultimate) return '';
+              // Ensure this.rows[rowIndex] is valid before accessing columns
+              if (!this.rows[rowIndex] || !this.rows[rowIndex].columns) return '';
+
+              const displayColumns = (rowIndex % 2 === 0) ? this.rows[rowIndex].columns : this.rows[rowIndex].columns.slice().reverse();
+              
+              if (colIndex + 1 < displayColumns.length) {
+                const nextDisplayedColumn = displayColumns[colIndex + 1];
+                // Ensure nextDisplayedColumn is not a placeholder before checking isOverallLast
+                if (nextDisplayedColumn && nextDisplayedColumn.lines && nextDisplayedColumn.lines[0] !== '' && nextDisplayedColumn.isOverallLast) {
+                  return (rowIndex % 2 === 0) ? 'url(#arrowhead-ltr)' : 'url(#arrowhead)';
+                }
+              }
+              return '';
+            },
+            getInterRowArrowMarker(column, rowIndex) {
+              // column is the starting column object for the curved path from the current row
+              if (!column.isPenultimate) return '';
+
+              const nextRowIndex = rowIndex + 1;
+              if (nextRowIndex >= this.rows.length) return ''; // No next row to connect to
+
+              const nextRowDefinition = this.rows[nextRowIndex];
+              let targetItemInNextRow = null;
+              // Find the first actual data item in the next row (not a placeholder)
+              for (let i = 0; i < nextRowDefinition.columns.length; i++) {
+                if (nextRowDefinition.columns[i] && nextRowDefinition.columns[i].lines && nextRowDefinition.columns[i].lines[0] !== '') {
+                  targetItemInNextRow = nextRowDefinition.columns[i];
+                  break;
+                }
+              }
+
+              if (targetItemInNextRow && targetItemInNextRow.isOverallLast) {
+                // Determine marker type based on the current row's directionality
+                // this.rows[rowIndex].leftToRightRow is true for LTR rows (even rowIndex), false for RTL (odd rowIndex)
+                if (this.rows[rowIndex].leftToRightRow) { 
+                  return 'url(#arrowhead-ltr)'; // Path from LTR row (RHS path)
+                } else {
+                  return 'url(#arrowhead)';     // Path from RTL row (LHS path)
+                }
+              }
+              return '';
             },
             saveAsPNG() {
                 const svgElement = document.querySelector('svg');
