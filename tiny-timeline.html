@@ -173,29 +173,28 @@
               }
               return false;
             },
-            getIntraRowArrowMarker(column, rowIndex, colIndex) { // colIndex is from the v-for loop over display-ordered columns
-              if (!column.isPenultimate) return ''; // Current item must be the penultimate
+            getIntraRowArrowMarker(column, rowIndex, colIndex) { // column is displayColumns[colIndex], i.e., the item from which the line segment visually starts
               if (!this.rows[rowIndex] || !this.rows[rowIndex].columns) return '';
 
               const isLTR = (rowIndex % 2 === 0);
-              const displayColumns = this.getDisplayOrderedColumns(rowIndex);
+              // getDisplayOrderedColumns is an existing method
+              const displayColumns = this.getDisplayOrderedColumns(rowIndex); 
+              
+              if (!column || !column.lines || column.lines[0] === '') return ''; // Current item must be valid
 
-              // The 'targetItemForArrow' is the one that should have 'isOverallLast = true'.
-              // If current 'column' is penultimate:
-              // - In LTR rows, the overall last item would be displayed next (colIndex + 1).
-              // - In RTL rows (reversed display), the overall last item would have been displayed *before* the penultimate (colIndex - 1).
-              const targetItemForArrowIndex = isLTR ? (colIndex + 1) : (colIndex - 1);
+              const nextDisplayedColumn = (colIndex + 1 < displayColumns.length) ? displayColumns[colIndex + 1] : null;
+              
+              if (!nextDisplayedColumn || !nextDisplayedColumn.lines || nextDisplayedColumn.lines[0] === '') {
+                return ''; 
+              }
 
-              if (targetItemForArrowIndex >= 0 && targetItemForArrowIndex < displayColumns.length) {
-                const targetItem = displayColumns[targetItemForArrowIndex];
-                if (targetItem && targetItem.lines && targetItem.lines[0] !== '' && targetItem.isOverallLast) {
-                  // Determine marker type based on the visual direction of the line segment.
-                  // The line segment connects 'column' (at colIndex) to 'displayColumns[colIndex+1]' (the next in display).
-                  // This means for LTR, it points right. For RTL, it also points "right" in terms of array iteration,
-                  // but visually it's left because the coordinates are flipped.
-                  // LTR line segment: from colIndex to colIndex+1, visual LTR --> use arrowhead-ltr
-                  // RTL line segment: from colIndex to colIndex+1 (in reversed list), visual RTL --> use arrowhead
-                  return isLTR ? 'url(#arrowhead-ltr)' : 'url(#arrowhead)';
+              if (isLTR) {
+                if (column.isPenultimate && nextDisplayedColumn.isOverallLast) {
+                  return 'url(#arrowhead-ltr)';
+                }
+              } else { // RTL row
+                if (nextDisplayedColumn.isPenultimate && column.isOverallLast) {
+                  return 'url(#arrowhead)';
                 }
               }
               return '';
