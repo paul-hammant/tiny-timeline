@@ -70,7 +70,7 @@
                             <path d="M 179.2 230.6 C 139.0 230.4 85.3 225.6 65.2 258.6 C 45.1 291.6 43.4 366.9 65.2 400.2 C 87.0 433.6 145.7 429.9 189.2 430.6"
                                   stroke="#90ee90" stroke-linecap="butt" :marker-end="colIndex === 0 ? getInterRowArrowMarker(column, rowIndex) : ''" stroke-linejoin="round" stroke-width="7"/>
                         </g>
-                        <g v-if="colIndex < row.columns.length - 1 && row.columns[colIndex + 1].lines[0] !== ''">
+                        <g v-if="shouldRenderLineToNextDisplayedItem(column, rowIndex, colIndex)">
                             <line v-if="column.lines[0] !== ''" :x1="(rowIndex % 2 === 0 ? 200 : 381) + colIndex * 200"
                                   :y1="30 + rowIndex * 200"
                                   :x2="(rowIndex % 2 === 0 ? 380 : 201) + colIndex * 200"
@@ -156,18 +156,46 @@
             closeOverlay() {
                 this.showOverlay = false;
             },
-            getIntraRowArrowMarker(column, rowIndex, colIndex) {
-              if (!column.isPenultimate) return '';
-              // Ensure this.rows[rowIndex] is valid before accessing columns
-              if (!this.rows[rowIndex] || !this.rows[rowIndex].columns) return '';
+            getDisplayOrderedColumns(rowIndex) {
+              if (!this.rows[rowIndex] || !this.rows[rowIndex].columns) return [];
+              return (rowIndex % 2 === 0) ? this.rows[rowIndex].columns : this.rows[rowIndex].columns.slice().reverse();
+            },
+            shouldRenderLineToNextDisplayedItem(column, rowIndex, colIndex) {
+              // column is displayColumns[colIndex] from the v-for loop
+              if (!column || !column.lines || column.lines[0] === '') return false; // Current item itself is placeholder or invalid
 
-              const displayColumns = (rowIndex % 2 === 0) ? this.rows[rowIndex].columns : this.rows[rowIndex].columns.slice().reverse();
-              
+              const displayColumns = this.getDisplayOrderedColumns(rowIndex);
+              // Check if there is a next item in the display order
               if (colIndex + 1 < displayColumns.length) {
                 const nextDisplayedColumn = displayColumns[colIndex + 1];
-                // Ensure nextDisplayedColumn is not a placeholder before checking isOverallLast
-                if (nextDisplayedColumn && nextDisplayedColumn.lines && nextDisplayedColumn.lines[0] !== '' && nextDisplayedColumn.isOverallLast) {
-                  return (rowIndex % 2 === 0) ? 'url(#arrowhead-ltr)' : 'url(#arrowhead)';
+                // Ensure the next displayed item is not a placeholder
+                return nextDisplayedColumn && nextDisplayedColumn.lines && nextDisplayedColumn.lines[0] !== '';
+              }
+              return false;
+            },
+            getIntraRowArrowMarker(column, rowIndex, colIndex) { // colIndex is from the v-for loop over display-ordered columns
+              if (!column.isPenultimate) return ''; // Current item must be the penultimate
+              if (!this.rows[rowIndex] || !this.rows[rowIndex].columns) return '';
+
+              const isLTR = (rowIndex % 2 === 0);
+              const displayColumns = this.getDisplayOrderedColumns(rowIndex);
+
+              // The 'targetItemForArrow' is the one that should have 'isOverallLast = true'.
+              // If current 'column' is penultimate:
+              // - In LTR rows, the overall last item would be displayed next (colIndex + 1).
+              // - In RTL rows (reversed display), the overall last item would have been displayed *before* the penultimate (colIndex - 1).
+              const targetItemForArrowIndex = isLTR ? (colIndex + 1) : (colIndex - 1);
+
+              if (targetItemForArrowIndex >= 0 && targetItemForArrowIndex < displayColumns.length) {
+                const targetItem = displayColumns[targetItemForArrowIndex];
+                if (targetItem && targetItem.lines && targetItem.lines[0] !== '' && targetItem.isOverallLast) {
+                  // Determine marker type based on the visual direction of the line segment.
+                  // The line segment connects 'column' (at colIndex) to 'displayColumns[colIndex+1]' (the next in display).
+                  // This means for LTR, it points right. For RTL, it also points "right" in terms of array iteration,
+                  // but visually it's left because the coordinates are flipped.
+                  // LTR line segment: from colIndex to colIndex+1, visual LTR --> use arrowhead-ltr
+                  // RTL line segment: from colIndex to colIndex+1 (in reversed list), visual RTL --> use arrowhead
+                  return isLTR ? 'url(#arrowhead-ltr)' : 'url(#arrowhead)';
                 }
               }
               return '';
