@@ -87,7 +87,7 @@
                             <title>heading</title>
                             <text :transform="'translate(' + ((colIndex === 0 ? 155 : 170) + colIndex * 200) + ' ' + (rowIndex * 200 - 0.3) + ')'"
                                   fill="black">
-                                <tspan font-family="Helvetica" font-size="14" fill="black" font-weight="bold" x="-45" y="15"
+                                <tspan font-family="Helvetica" :font-size="getTitleFontSize(column.lines[0])" fill="black" font-weight="bold" x="-45" y="15"
                                        xml:space="preserve">{{ column.lines[0] }}</tspan>
                             </text>
                         </g>
@@ -226,6 +226,13 @@
                 }
               }
               return '';
+            },
+            getTitleFontSize(titleText) {
+              if (!titleText) return '14px'; // Default if title is undefined or empty
+              const len = titleText.length;
+              if (len > 40) return '10px';
+              if (len > 30) return '12px';
+              return '14px';
             },
             saveAsPNG() {
                 const svgElement = document.querySelector('svg');
