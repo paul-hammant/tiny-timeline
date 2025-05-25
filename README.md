@@ -14,18 +14,18 @@ Lots to do.
 
 The `tests/` directory contains JSON files for testing the timeline rendering with varying numbers of entries. These files use 'lorem ipsum' placeholder text.
 
-- `tests/one-timeline-entry.json`: 1 timeline entry.
-- `tests/two-timeline-entries.json`: 2 timeline entries.
-- `tests/three-timeline-entries.json`: 3 timeline entries. One title is longer than the apparent space for it
-- `tests/four-timeline-entries.json`: 4 timeline entries.
-- `tests/five-timeline-entries.json`: 5 timeline entries.
-- `tests/six-timeline-entries.json`: 6 timeline entries.
-- `tests/seven-timeline-entries.json`: 7 timeline entries.
-- `tests/eight-timeline-entries.json`: 8 timeline entries.
-- `tests/nine-timeline-entries.json`: 9 timeline entries.
-- `tests/ten-timeline-entries.json`: 10 timeline entries.
-- `tests/eleven-timeline-entries.json`: 11 timeline entries.
-- `tests/twelve-timeline-entries.json`: 12 timeline entries.
-- `tests/thirteen-timeline-entries.json`: 13 timeline entries.
-- `tests/fourteen-timeline-entries.json`: 14 timeline entries.
-- `tests/fifteen-timeline-entries.json`: 15 timeline entries.
+- [1 timeline entry](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#one-timeline-entry)
+- [2 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#two-timeline-entries)
+- [3 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#three-timeline-entries) One title is longer than the apparent space for it
+- [4 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#four-timeline-entries)
+- [5 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#five-timeline-entries)
+- [6 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#six-timeline-entries)
+- [7 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#seven-timeline-entries)
+- [8 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#eight-timeline-entries)
+- [9 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#nine-timeline-entries)
+- [10 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#ten-timeline-entries)
+- [11 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#eleven-timeline-entries)
+- [12 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#twelve-timeline-entries)
+- [13 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#thirteen-timeline-entries)
+- [14 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#fourteen-timeline-entries)
+- [15 timeline entries](https://paul-hammant.github.io/tiny-timeline//tiny-timeline.html#fifteen-timeline-entries)
