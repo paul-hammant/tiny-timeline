@@ -1,0 +1,38 @@
+[
+  {
+    "lines": [
+      "Lorem Ipsum Entry 1",
+      "Dolor sit amet, consectetur adipiscing elit,",
+      "sed do eiusmod tempor incididunt ut labore et",
+      "dolore magna aliqua."
+    ],
+    "webURL": "https://example.com/lorem1"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 2",
+      "Ut enim ad minim veniam, quis nostrud exercitation",
+      "ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit."
+    ],
+    "webURL": "https://example.com/lorem2"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 3",
+      "Excepteur sint occaecat cupidatat non proident,",
+      "sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Lorem ipsum dolor sit amet."
+    ],
+    "webURL": "https://example.com/lorem3"
+  },
+  {
+    "lines": [
+      "Lorem Ipsum Entry 4",
+      "Nemo enim ipsam voluptatem quia voluptas sit",
+      "aspernatur aut odit aut fugit, sed quia consequuntur magni",
+      "dolores eos qui ratione voluptatem sequi nesciunt."
+    ],
+    "webURL": "https://example.com/lorem4"
+  }
+]
